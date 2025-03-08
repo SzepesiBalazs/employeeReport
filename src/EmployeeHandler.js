@@ -10,6 +10,8 @@ export default class EmployeeHandler {
   getEmployees(){
     return this.employees
   }
+
+  getEmployeesAscended(){
+    return this.employees.sort((a,b) => a.firstname.localeCompare(b.firstname))
+  }
 }
-
-
