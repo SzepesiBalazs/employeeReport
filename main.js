@@ -35,28 +35,18 @@ function selectUnderaged() {
 
 function sortEmployeesAscended() {
   const employeeDisplay = document.getElementById("employee-list");
-
-  employees.sort((a, b) => a.firstname - b.firstname);
-
-  let groupedString = "";
-  employees.forEach((employee) => {
-    groupedString += `<span>${employee.firstname} ${employee.lastname} ${employee.age}</span><br>`;
-  });
-
-  employeeDisplay.innerHTML = groupedString;
+  employeeHandler.isDescendingEnabled = false;
+  employeeHandler.isAscendingEnabled = true;
+  employeeHandler.handleSorting();
+  employeeHandler.displayEmployees(employeeDisplay);
 }
 
 function sortEmployeesDescended() {
   const employeeDisplay = document.getElementById("employee-list");
-
-  employees.sort((a, b) => b.firstname - a.firstname);
-
-  let groupedString = "";
-  employees.forEach((employee) => {
-    groupedString += `<span>${employee.firstname} ${employee.lastname} ${employee.age}</span><br>`;
-  });
-
-  employeeDisplay.innerHTML = groupedString;
+  employeeHandler.isAscendingEnabled = false;
+  employeeHandler.isDescendingEnabled = true;
+  employeeHandler.handleSorting();
+  employeeHandler.displayEmployees(employeeDisplay);
 }
 
 const button1 = document.querySelector("#underaged-button");

@@ -18,4 +18,21 @@ export default class EmployeeHandler {
   getEmployeesDescended(){
     return this.employees.sort((a,b) => b.firstname.localeCompare(a.firstname))
   }
+
+  handleSorting(){
+    if (this.isAscendingEnabled) {
+      this.getEmployeesAscended()
+    } if (this.isDescendingEnabled) {
+      this.getEmployeesDescended()
+    }
+  }
+
+  displayEmployees(employeeDisplay){
+    let groupedString = "";
+    this.employees.forEach((employee) => {
+    groupedString += `<span>${employee.firstname} ${employee.lastname} ${employee.age}</span><br>`;
+  });
+
+  employeeDisplay.innerHTML = groupedString;
+  }
 }

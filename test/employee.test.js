@@ -17,7 +17,7 @@ describe("EmployeeReport", () => {
       { firstname: "Christian", lastname: "Wilson", age: 19 },
     ];
     expect(employeeDataHandler.getEmployeesAscended().length).toBe(3);
-    //console.log(employeeDataHandler.getEmployeesAscended())
+    console.log(employeeDataHandler.getEmployeesAscended())
   }); 
   
   test("Should sort workers in descending order", () => {
