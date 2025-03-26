@@ -2,35 +2,17 @@ import EmployeeHandler from "./src/EmployeeHandler.js";
 
 const employeeHandler = new EmployeeHandler();
 
-const employees = employeeHandler.getEmployees();
-const underaged = employeeHandler.getEmployeesByAge();
-
 groupCharacters();
 
 function groupCharacters() {
   const employeeDisplay = document.getElementById("employee-list");
-  let groupedString = "";
-
-  employees.forEach((employee) => {
-    groupedString += `<span>${employee.firstname}${" "}${
-      employee.lastname
-    }${" "}${employee.age}</span><br>`;
-  });
-
-  employeeDisplay.innerHTML = groupedString;
+  employeeHandler.displayEmployees(employeeDisplay);
 }
 
 function selectUnderaged() {
   const employeeDisplay = document.getElementById("employee-list");
-
-  let groupedString = "";
-  underaged.forEach((employee) => {
-    groupedString += `<span>${employee.firstname}${" "}${
-      employee.lastname
-    }${" "}${employee.age}</span><br>`;
-  });
-
-  employeeDisplay.innerHTML = groupedString;
+  employeeHandler.handleUnderAged();
+  employeeHandler.displayEmployees(employeeDisplay);
 }
 
 function sortEmployeesAscended() {
@@ -49,6 +31,12 @@ function sortEmployeesDescended() {
   employeeHandler.displayEmployees(employeeDisplay);
 }
 
+function resetEmployees() {
+  const employeeDisplay = document.getElementById("employee-list");
+  employeeHandler.reset();
+  employeeHandler.displayEmployees(employeeDisplay);
+}
+
 const button1 = document.querySelector("#underaged-button");
 button1.addEventListener("click", selectUnderaged);
 
@@ -57,3 +45,6 @@ button2.addEventListener("click", sortEmployeesAscended);
 
 const button3 = document.querySelector("#descending-button");
 button3.addEventListener("click", sortEmployeesDescended);
+
+const button4 = document.querySelector("#reset-button");
+button4.addEventListener("click", resetEmployees);

@@ -1,14 +1,16 @@
 import employees from "../employeeData.json" with { type: "json" };
 export default class EmployeeHandler {
   constructor() {
+    this.originalEmployees = employees
     this.employees = employees
   }
-  getEmployeesByAge(){
-    return this.employees.filter(employee => employee.age < 18)
+ 
+  getOriginalEmployees(){
+    return this.originalEmployees;
   }
-
-  getEmployees(){
-    return this.employees
+ 
+  getEmployeesByAge(){
+   this.employees = this.employees.filter(employee => employee.age < 18)
   }
 
   getEmployeesAscended(){
@@ -24,8 +26,20 @@ export default class EmployeeHandler {
       this.getEmployeesAscended()
     } if (this.isDescendingEnabled) {
       this.getEmployeesDescended()
-    }
+    } 
   }
+
+  handleUnderAged(){ 
+    console.log(this.employees)
+      this.getEmployeesByAge(); 
+  }
+
+
+  reset(){
+    this.employees = this.originalEmployees
+  }
+
+  
 
   displayEmployees(employeeDisplay){
     let groupedString = "";
@@ -36,3 +50,4 @@ export default class EmployeeHandler {
   employeeDisplay.innerHTML = groupedString;
   }
 }
+
